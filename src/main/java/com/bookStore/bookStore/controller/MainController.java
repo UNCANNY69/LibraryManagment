@@ -9,7 +9,7 @@ public class MainController {
     @GetMapping("/")
     public String home_admin(){
 
-        return "home_admin";
+        return "home_user";
     }
     @GetMapping("/bookRegister")
     public String bookRegister(){
