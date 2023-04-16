@@ -1,12 +1,10 @@
-package com.bookStore.bookStore.entity;
+package com.bookStore.bookStore.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "books")
 @NoArgsConstructor
 public class Book {
     @Id
@@ -14,11 +12,15 @@ public class Book {
     private int id;
     private String name;
     private String author;
-    public Book(int id,String name,String author) {
-        super();
+    private  int pages;
+    private int stock;
+
+    public Book(int id, String name, String author, int pages, int stock) {
         this.id = id;
         this.name = name;
         this.author = author;
+        this.pages = pages;
+        this.stock = stock;
     }
 
 
@@ -34,6 +36,14 @@ public class Book {
         return author;
     }
 
+    public int getPages() {
+        return pages;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -44,5 +54,13 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
