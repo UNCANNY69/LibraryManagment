@@ -1,4 +1,4 @@
-package com.bookStore.bookStore.Web.Dto;
+package com.bookStore.bookStore.Controller.Dto;
 
 public class UserRegistrationDto {
     private String firstName;

@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "books")
 @NoArgsConstructor
-public class Book {
+
+public class Available_Book{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,7 +16,7 @@ public class Book {
     private  int pages;
     private int stock;
 
-    public Book(int id, String name, String author, int pages, int stock) {
+    public Available_Book(int id, String name, String author, int pages, int stock) {
         this.id = id;
         this.name = name;
         this.author = author;
