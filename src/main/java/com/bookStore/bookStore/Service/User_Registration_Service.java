@@ -33,7 +33,7 @@ public class User_Registration_Service implements User_Registration_Interface {
     public User save(UserRegistrationDto registrationDto) {
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmail(),
-                passwordEncoder.encode(registrationDto.getPassword()), List.of(new Role("ROLE_USER")));
+                passwordEncoder.encode(registrationDto.getPassword()), List.of(new Role("ROLE_USER"),new Role("ROLE_ADMIN")));
         return userRepository.save(user);
     }
 

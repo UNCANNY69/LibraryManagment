@@ -1,22 +1,22 @@
 package com.bookStore.bookStore.Service;
 
 import com.bookStore.bookStore.Model.Book;
-import com.bookStore.bookStore.Repository.BookRepository;
+import com.bookStore.bookStore.Repository.Book_Search_Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class Book_Search_Service {
-    private final BookRepository bookRepository;
+    private final Book_Search_Repository bookSearchRepository;
 
-    public Book_Search_Service(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public Book_Search_Service(Book_Search_Repository bookSearchRepository) {
+        this.bookSearchRepository = bookSearchRepository;
     }
     public List<Book> searchBooks(String query){
         if(query!=null) {
-            return bookRepository.searchBookSQL(query);
+            return bookSearchRepository.searchBookSQL(query);
         }
-        return bookRepository.findAll();
+        return bookSearchRepository.findAll();
     }
 }
