@@ -1,7 +1,7 @@
 package com.bookStore.bookStore.Controller;
 
 import com.bookStore.bookStore.Controller.Dto.UserRegistrationDto;
-import com.bookStore.bookStore.Service.User_Registartion_Service;
+import com.bookStore.bookStore.Service.User_Registration_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/registration")
 public class UserController {
     @Autowired
-    private User_Registartion_Service user_service;
-    public UserController(User_Registartion_Service user_service){
+    private User_Registration_Service user_service;
+    public UserController(User_Registration_Service user_service){
         super();
         this.user_service = user_service;
     }
@@ -27,7 +27,7 @@ public class UserController {
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto reg ){
         user_service.save(reg);
-        return "redirect:/registration?success";
+        return "index";
     }
 
 

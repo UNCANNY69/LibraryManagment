@@ -1,6 +1,6 @@
 package com.bookStore.bookStore.Service;
 
-import com.bookStore.bookStore.Model.Available_Book;
+import com.bookStore.bookStore.Model.Book;
 import com.bookStore.bookStore.Repository.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class Book_Display_Service {
         this.bRepo = bRepo;
     }
 
-    public List<Available_Book> getRecordsBack(){
+    public List<Book> getRecordsBack(){
         return bRepo.findAll();
     }
 

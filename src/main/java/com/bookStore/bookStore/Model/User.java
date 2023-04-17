@@ -26,6 +26,14 @@ public class User {
 
     private Collection <Role> roles;
 
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
+
     public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
         super();
         this.firstName = firstName;

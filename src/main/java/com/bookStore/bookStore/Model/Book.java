@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "books")
 @NoArgsConstructor
 
-public class Available_Book{
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -16,14 +16,18 @@ public class Available_Book{
     private  int pages;
     private int stock;
 
-    public Available_Book(int id, String name, String author, int pages, int stock) {
+
+
+    private String availability;
+
+    public Book(int id, String name, String author, int pages, int stock, String availability) {
         this.id = id;
         this.name = name;
         this.author = author;
         this.pages = pages;
         this.stock = stock;
+        this.availability = availability;
     }
-
 
     public int getId() {
         return id;
@@ -63,5 +67,12 @@ public class Available_Book{
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+    public String getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
     }
 }
