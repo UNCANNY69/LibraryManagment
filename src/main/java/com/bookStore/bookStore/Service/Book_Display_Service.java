@@ -2,7 +2,6 @@ package com.bookStore.bookStore.Service;
 
 import com.bookStore.bookStore.Model.Book;
 import com.bookStore.bookStore.Repository.Book_Display_Repository;
-import com.bookStore.bookStore.Repository.Book_Search_Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +17,9 @@ public class Book_Display_Service {
     public List<Book> getRecordsBack(){
         return bRepo.findAllBooks();
     }
-    public List<Book> getRecords(){
-        return bRepo.findAll();
-    }
 
+    public Void updateBook(int id){
+        bRepo.updateBook(id);
+        return null;
+    }
 }

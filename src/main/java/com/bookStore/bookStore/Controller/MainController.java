@@ -27,7 +27,7 @@ public class MainController {
 
     @GetMapping("/")
     public String getAllBooks(Model model ){
-        List<Book> list=service_d.getRecords();
+        List<Book> list=service_d.getRecordsBack();
         model.addAttribute("book",list);
         String user = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("user",user);

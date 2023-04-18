@@ -48,8 +48,8 @@
             <button type = "button" class = "btn-cart">
               <span><i class = "fas fa-plus"></i></span>
             </button>
-            <form th:action="@{/add}">
-            <button type = "submit" class = "btn-buy" name="b" th:action="@{/add}" th:value="${books.getName()}">Borrow</button>
+            <form th:action="@{/add/{id}(id=${books.getId()})}">
+            <button type = "submit" class = "btn-buy" name="b"  th:value="${books.getName()}">Borrow</button>
             </form>
           </div>
         </div>
