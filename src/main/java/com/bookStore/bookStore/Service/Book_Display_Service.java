@@ -22,4 +22,9 @@ public class Book_Display_Service {
         bRepo.updateBook(id);
         return null;
     }
+
+    public Void updateBorrowedBook(int id){
+        bRepo.updateBorrowedBook(id);
+        return null;
+    }
 }

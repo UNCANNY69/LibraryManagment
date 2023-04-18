@@ -36,10 +36,12 @@ public class User_Book {
         this.book_name = book_name;
     }
 
-    public User_Book(String user_id, String book_name) {
+    public User_Book(int id, String user_id, String book_name) {
+        this.id = id;
         this.user_id = user_id;
         this.book_name = book_name;
     }
+
 
     private String book_name;
 

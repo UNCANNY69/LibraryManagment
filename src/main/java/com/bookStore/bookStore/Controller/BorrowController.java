@@ -20,9 +20,17 @@ public class BorrowController {
     }
     @GetMapping("/add/{id}")
     public RedirectView addBook(@RequestParam("b") String s, @PathVariable int id){
-        User_Book ub  = new User_Book(SecurityContextHolder.getContext().getAuthentication().getName(),s);
+        User_Book ub  = new User_Book(id,SecurityContextHolder.getContext().getAuthentication().getName(),s);
         bbs.addProduct(ub);
         bdr.updateBook(id);
         return new RedirectView("/", true);
     }
+
+    @GetMapping("/return/{id}")
+    public RedirectView returnBook( @RequestParam("b") String s,@PathVariable int id){
+        bdr.updateBorrowedBook(id);
+        bdr.updateBorrowedUser(s,id);
+        return new RedirectView("/", true);
+    }
+
 }
