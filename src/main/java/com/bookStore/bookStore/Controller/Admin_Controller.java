@@ -46,7 +46,7 @@ public class Admin_Controller {
 
         // set employee as a model attribute to pre-populate the form
         model.addAttribute("book", book);
-        return "update_employee";
+        return "update_book";
     }
 
     @GetMapping("/deleteBook/{id}")

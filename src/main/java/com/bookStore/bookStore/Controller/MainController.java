@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MainController {
@@ -48,7 +50,7 @@ public class MainController {
 
     @GetMapping("/borrowed")
     public String borrow(Model model){
-        List<Book> list = service_b.getBorrowedBack();
+        List<Book> list=service_d.getBorrowedBooks(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("book",list);
         return "borrowed";
     }
@@ -57,5 +59,6 @@ public class MainController {
     public RedirectView redirect(){
         return new RedirectView("/", true);
     }
+
 
 }

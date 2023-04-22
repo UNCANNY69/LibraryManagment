@@ -5,6 +5,7 @@ import com.bookStore.bookStore.Repository.Book_Display_Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class Book_Display_Service {
@@ -26,8 +27,10 @@ public class Book_Display_Service {
         bRepo.updateBorrowedBook(id);
     }
 
-    public void  updateBorrowedUser(String s,String id){
+    public void updateBorrowedUser(String s,String id){
         bRepo.updateBorrowedUser(s,id);
-
+    }
+    public List<Book> getBorrowedBooks(String name){
+        return bRepo.findBorrowedBooks(name);
     }
 }

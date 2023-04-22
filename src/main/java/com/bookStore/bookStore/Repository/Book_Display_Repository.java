@@ -8,12 +8,16 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface Book_Display_Repository extends JpaRepository<Book,Integer> {
     @Query(value = "SELECT b FROM Book b WHERE "
             + "b.availability = 'Yes' ")
     List<Book> findAllBooks();
+
+    @Query(value = "SELECT b FROM Book b JOIN User_Book bb ON b.name = bb.book_name WHERE bb.user_id=:name")
+    List<Book> findBorrowedBooks(String name);
 
     @Modifying
     @Transactional
