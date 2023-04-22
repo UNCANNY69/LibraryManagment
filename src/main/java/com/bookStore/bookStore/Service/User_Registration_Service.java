@@ -2,7 +2,7 @@ package com.bookStore.bookStore.Service;
 
 import com.bookStore.bookStore.Model.Role;
 import com.bookStore.bookStore.Model.User;
-import com.bookStore.bookStore.Repository.UserRepository;
+import com.bookStore.bookStore.Repository.User_Repository;
 import com.bookStore.bookStore.Controller.Dto.UserRegistrationDto;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,8 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,12 +17,12 @@ import java.util.stream.Collectors;
 @Service
 public class User_Registration_Service implements User_Registration_Interface {
 
-    private final UserRepository userRepository;
+    private final User_Repository userRepository;
 
 
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public User_Registration_Service(UserRepository userRepository) {
+    public User_Registration_Service(User_Repository userRepository) {
         super();
         this.userRepository = userRepository;
     }
@@ -33,7 +31,7 @@ public class User_Registration_Service implements User_Registration_Interface {
     public User save(UserRegistrationDto registrationDto) {
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmail(),
-                passwordEncoder.encode(registrationDto.getPassword()), List.of(new Role("ROLE_USER"),new Role("ROLE_ADMIN")));
+                passwordEncoder.encode(registrationDto.getPassword()), List.of(new Role("ROLE_USER", registrationDto.getEmail())));
         return userRepository.save(user);
     }
 
