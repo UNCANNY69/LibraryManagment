@@ -28,6 +28,6 @@ public interface Book_Display_Repository extends JpaRepository<Book,Integer> {
     @Modifying
     @Transactional
     @Query(value="DELETE User_Book b WHERE b.book_name=:name AND b.user_id=:id")
-    void updateBorrowedUser(String name,int id);
+    void updateBorrowedUser(String name,String id);
     
 }

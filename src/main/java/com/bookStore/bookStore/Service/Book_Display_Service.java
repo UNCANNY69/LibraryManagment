@@ -18,13 +18,16 @@ public class Book_Display_Service {
         return bRepo.findAllBooks();
     }
 
-    public Void updateBook(int id){
+    public void updateBook(int id){
         bRepo.updateBook(id);
-        return null;
     }
 
-    public Void updateBorrowedBook(int id){
+    public void updateBorrowedBook(int id){
         bRepo.updateBorrowedBook(id);
-        return null;
+    }
+
+    public void  updateBorrowedUser(String s,String id){
+        bRepo.updateBorrowedUser(s,id);
+
     }
 }

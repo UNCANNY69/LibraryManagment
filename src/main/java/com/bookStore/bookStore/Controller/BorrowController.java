@@ -3,6 +3,7 @@ package com.bookStore.bookStore.Controller;
 import com.bookStore.bookStore.Model.User_Book;
 import com.bookStore.bookStore.Repository.Book_Display_Repository;
 import com.bookStore.bookStore.Service.Book_Borrow_Service;
+import com.bookStore.bookStore.Service.Book_Display_Service;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +14,8 @@ import org.springframework.web.servlet.view.RedirectView;
 public class BorrowController {
 
     private final Book_Borrow_Service bbs;
-    private final Book_Display_Repository bdr;
-    public BorrowController(Book_Borrow_Service bbs, Book_Display_Repository bdr) {
+    private final Book_Display_Service bdr;
+    public BorrowController(Book_Borrow_Service bbs, Book_Display_Service bdr) {
         this.bbs = bbs;
         this.bdr = bdr;
     }
@@ -29,7 +30,7 @@ public class BorrowController {
     @GetMapping("/return/{id}")
     public RedirectView returnBook( @RequestParam("b") String s,@PathVariable int id){
         bdr.updateBorrowedBook(id);
-        bdr.updateBorrowedUser(s,id);
+        bdr.updateBorrowedUser(s,SecurityContextHolder.getContext().getAuthentication().getName());
         return new RedirectView("/", true);
     }
 
