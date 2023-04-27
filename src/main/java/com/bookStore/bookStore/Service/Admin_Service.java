@@ -45,5 +45,8 @@ public class Admin_Service {
         return Optional.ofNullable(roleRepository.check(id, role));
     }
 
+    public List<Role> getRoles(){
+        return adminRepository.getRoles();
+    }
 
 }

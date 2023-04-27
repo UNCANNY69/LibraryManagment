@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Library Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand text-white" href="#">Library</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-white" type="submit" th:href="@{/red}" >Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link text-white" type="submit" th:href="@{/viz}" >Visualization <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link text-white" type="submit" th:href="@{/sys_admin}" >System_Admin<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container my-2">
+    <h1>Users List</h1>
+
+    <table class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>User Email</th>
+            <th>User Role</th>
+            <th> Update Role </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="role : ${listRoles}">
+            <td th:text="${role.getId_name()}"></td>
+            <td th:text="${role.getName()}"></td>
+            <td>
+                <a th:href="@{/add_role/{user_id}(id=${role.getId()})}" class="btn btn-primary">Make_Admin</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>

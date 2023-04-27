@@ -34,17 +34,12 @@ public class Admin_Controller {
     }
     @PostMapping("/saveBook")
     public String saveEmployee(@ModelAttribute("book") Book book) {
-        // save employee to database
         adminService.saveBook(book);
         return "redirect:/admin";
     }
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") int id, Model model) {
-
-        // get employee from the service
         Book book = adminService.getBookById(id);
-
-        // set employee as a model attribute to pre-populate the form
         model.addAttribute("book", book);
         return "update_book";
     }
@@ -63,6 +58,14 @@ public class Admin_Controller {
         }
         return "denied";
     }
+    @GetMapping("/sys_admin")
+    public String getUsers(Model model){
+        model.addAttribute("listRoles",adminService.getRoles());
+        return "systemAdmin";
+    }
+    @GetMapping("/add_role/{user_id}")
+    public void updateRole(@PathVariable String user_id){
 
+    }
 
 }
